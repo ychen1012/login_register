@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:text="注册"
+        android:textColor="#00E5EE"
+        android:textSize="35dp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="25dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/user_32"
+        android:drawableRight="@drawable/error_32"
+        android:drawablePadding="10dp"
+        android:hint="@string/register_userName"
+        android:maxLength="16"
+        android:padding="10dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="25dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/email_32"
+        android:drawableRight="@drawable/error_32"
+        android:drawablePadding="10dp"
+        android:hint="@string/regiter_email"
+        android:padding="10dp"
+        android:maxLength="16"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/password_et32"
+        android:drawableRight="@drawable/error_32"
+        android:drawablePadding="10dp"
+        android:hint="@string/register_password"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/et_password2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/password_et32"
+        android:drawableRight="@drawable/error_32"
+        android:drawablePadding="10dp"
+        android:hint="@string/register_password1"
+        android:maxLength="16"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/register_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:height="50dp"
+        android:background="@drawable/border_line_wjhile"
+        android:gravity="center"
+        android:text="注册"
+        android:textColor="#104E8B"
+        android:textSize="20dp" />
+
+</LinearLayout>

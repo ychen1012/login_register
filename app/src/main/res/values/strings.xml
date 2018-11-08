@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mydiary</string>
+    <string name="register_userName">用户名</string>
+    <string name="regiter_email">邮 箱</string>
+    <string name="register_password">输入密码</string>
+    <string name="register_password1">确认密码</string>
 </resources>

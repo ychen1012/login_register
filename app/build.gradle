@@ -43,6 +43,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-compress
     implementation 'org.apache.commons:commons-compress:1.18'
 
+//gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 
     //SQLite orm
     implementation 'io.requery:requery:1.5.1'

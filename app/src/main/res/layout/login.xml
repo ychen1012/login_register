@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:text="登录"
+        android:textColor="#00E5EE"
+        android:textSize="35dp" />
+
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="25dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/email_32"
+        android:drawableRight="@drawable/error_32"
+        android:drawablePadding="10dp"
+        android:hint="输入邮箱"
+        android:maxLength="16"
+        android:padding="10dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="25dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/password_et32"
+        android:drawableRight="@drawable/error_32"
+        android:drawablePadding="10dp"
+        android:hint="@string/register_password"
+        android:maxLength="16"
+        android:padding="10dp"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:height="50dp"
+        android:background="@drawable/border_line_wjhile"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="#104E88"
+        android:textSize="20dp" />
+
+
+</LinearLayout>
