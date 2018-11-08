@@ -6,21 +6,21 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "user")
-public abstract class AbstractUser {
+public abstract class AbstractUser implements Persistable {
     @Key
     @Generated
     @Column(name = "user_id")
-    private int userId;
+    int userId;
     @Column(name = "User_name")
-    private String userName;
+    String userName;
     @Column(name = "password")
-    private StringBuilder password;
+    StringBuilder password;
     @Column(name = "create_time")
-    private Timestamp createTime;
+    Timestamp createTime;
     @Column(name = "email")
-    private String email;
+    String email;
     @Column(name = "storage")
-    private int storage;
+    int storage;
     @Column(name = "diary_password")
-    private int diaryPassword;
+    int diaryPassword;
 }

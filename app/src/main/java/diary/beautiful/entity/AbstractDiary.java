@@ -10,25 +10,25 @@ public abstract class AbstractDiary implements Persistable {
     @Key
     @Generated
     @Column(name = "diary_id")
-    private int diaryId;
+    int diaryId;
     @Column(name = "user_id")
-    private int userId;
+    int userId;
     @Column(name = "diary_title")
-    private String diaryTitle;
+    String diaryTitle;
     @Column(name = "diary_path")
-    private String path;
+    String path;
     @Column(name = "diary_emotion")
-    private String diaryEmotion;
+    String diaryEmotion;
     @Column(name = "diary_tag")
-    private String diaryTag;
+    String diaryTag;
     @Column(name = "is_delete")
-    private boolean isDelete;
+    boolean isDelete;
     @Column(name = "is_encrypt")
-    private boolean isEncrypt;
+    boolean isEncrypt;
     @Column(name = "sync_time")
-    private Timestamp syncTime;
+    Timestamp syncTime;
     @Column(name = "diary_create_time")
-    private Timestamp diaryCreateTime;
+    Timestamp diaryCreateTime;
     @Column(name = "diary_last_edit_time")
-    private Timestamp diaryLastEditTime;
+    Timestamp diaryLastEditTime;
 }
