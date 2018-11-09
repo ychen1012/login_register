@@ -44,9 +44,9 @@ public class RegisterActivity extends Activity {
     void initComponents() {
         register_bt = findViewById(R.id.register_bt);
         userName_et = findViewById(R.id.username);
-        email_et =  findViewById(R.id.email);
+        email_et = findViewById(R.id.email);
         password_et = findViewById(R.id.et_password);
-        password_et2 =  findViewById(R.id.et_password2);
+        password_et2 = findViewById(R.id.et_password2);
     }
 
     void setListeners() {
@@ -68,14 +68,13 @@ public class RegisterActivity extends Activity {
         String passwordConfirm = password_et2.getText().toString();
         String checkMsg = checkDataValid(email, userName, password, passwordConfirm);
         if (!checkMsg.equals("ok")) {
-            toast(checkMsg);
             return;
         }
         request.addRequestParam("email", email);
         request.addRequestParam("userName", userName);
         request.addRequestParam("password", password);
 
-        HttpUtil.post("http://10.3.154.154:4396/user/register", request.getJsonStr(), new Callback() {
+        HttpUtil.post("http://192.168.31.49:4396/user/register", request.getJsonStr(), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -105,19 +104,37 @@ public class RegisterActivity extends Activity {
 
     //todo 改成 void，直接刷新界面，提示用户错误信息；
     private String checkDataValid(String email, String userName, String password, String passwordConfirm) {
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)
-                || TextUtils.isEmpty(passwordConfirm)) {
-            return "信息不能为空";
+//        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)
+//                || TextUtils.isEmpty(passwordConfirm)) {
+//
+//            return "信息不能为空";
+//        }
+        if (TextUtils.isEmpty(email)) {
+            email_et.setError("邮箱不能为空");
         }
-
+        if (TextUtils.isEmpty(userName)) {
+            userName_et.setError("用户名不能为空");
+        }
+        if (TextUtils.isEmpty(password)) {
+            password_et.setError("密码不能为空");
+        }
+        if (TextUtils.isEmpty(passwordConfirm)) {
+            password_et2.setError("密码不能为空");
+        }
         //密码8-20位
         if (password.length() < 8 || password.length() > 20) {
-            return "密码的长度在8-20位之间";
+            //return "密码的长度在8-20位之间";
+            password_et.setError("密码的长度在8-20位之间");
         }
         if (!password.equals(passwordConfirm)) {
-            return "两次密码不同";
+            password_et2.setError("两次密码不同");
         }
-        return "ok";
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)
+                && !TextUtils.isEmpty(passwordConfirm)) {
+
+            return "ok";
+        }
+        return "false";
     }
 
     private void toast(final String msg) {
