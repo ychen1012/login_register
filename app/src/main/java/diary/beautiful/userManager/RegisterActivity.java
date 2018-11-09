@@ -146,7 +146,4 @@ public class RegisterActivity extends Activity {
         });
     }
 
-//    public static void main(String[] args) {
-//        System.out.println("This is a example class");
-//    }
 }

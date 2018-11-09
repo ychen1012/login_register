@@ -16,7 +16,6 @@ import java.util.LinkedHashMap;
 
 import diary.beautiful.R;
 import diary.beautiful.model.RegisterResult;
-import diary.beautiful.util.CommonRequest;
 import diary.beautiful.util.HttpUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -62,19 +61,16 @@ public class LoginActivity extends Activity {
     }
 
     private void login() {
-        CommonRequest request = new CommonRequest();
         String email = emailEditText.getText().toString();
         String password = passwordText.getText().toString();
-//        String checkMsg = checkDataValid(email, password);
-//        if (checkMsg == null) {
-//            return;
-//        }
-//        if (!checkMsg.equals("succ")) {
-//            emailEditText.setError("");
-//            passwordText.setError("");
-//            return;
-//        }
-//        loginButton.setEnabled(true);
+        String checkMsg = checkDataValid(email, password);
+        if (checkMsg.length() <= 0) {
+            return;
+        }
+        if (!checkMsg.equals("succ")) {
+            return;
+        }
+        loginButton.setEnabled(true);
         LinkedHashMap<String, String> param = new LinkedHashMap<>();
         param.put("email", email);
         param.put("password", password);
@@ -98,23 +94,47 @@ public class LoginActivity extends Activity {
                 String loginResult = response.body().string();
                 RegisterResult registerResult = gson.fromJson(loginResult, RegisterResult.class);
                 if (registerResult == null) {
-                    emailValid = "网络连接失败";
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                    return;
                 }
                 if (registerResult.getResult().equals("true")) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(LoginActivity.this, "succ", Toast.LENGTH_SHORT).show();
+
                         }
                     });
+                    return;
 
                 } else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(LoginActivity.this, registerResult.getMsg(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    if (registerResult.getMsg().equals("邮箱不存在")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                emailEditText.setError(registerResult.getMsg());
+                            }
+                        });
+                        return;
+                    }
+                    if (registerResult.getMsg().equals("密码不匹配")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                passwordText.setError(registerResult.getMsg());
+                            }
+                        });
+                        return;
+                    }
+
 
                 }
             }
@@ -122,54 +142,24 @@ public class LoginActivity extends Activity {
         });
 
     }
+
 
     private String checkDataValid(String email, String password) {
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             emailEditText.setError("邮箱不能为空");
-            return null;
+            return "fail";
         }
-
-
-        CommonRequest request = new CommonRequest();
-        LinkedHashMap<String, String> param = new LinkedHashMap<>();
-        param.put("email", email);
-        HttpUtil.get("http://192.168.31.49:4396/user/email", param, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(LoginActivity.this, "netWork error", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Gson gson = new Gson();
-                String loginResult = response.body().string();
-                RegisterResult registerResult = gson.fromJson(loginResult, RegisterResult.class);
-                if (registerResult == null) {
-                    emailValid = "网络连接失败";
-                }
-                if (registerResult.getResult().equals("false")) {
-                    emailValid = "邮箱不存在";
-                }
-                if (registerResult.getResult().equals("true")) {
-                    emailValid = "succ";
-                }
-            }
-
-        });
-        if (!emailValid.equals("succ")) {
-            emailEditText.setError(emailValid);
-            return "false";
+        if (TextUtils.isEmpty(password) && !TextUtils.isEmpty(email)) {
+            passwordText.setError("密码不能为空");
+            return "fail";
         }
-        if (emailValid.equals("succ") && !TextUtils.isEmpty(password)) {
-            return "succ";
+        if (TextUtils.isEmpty(password) && TextUtils.isEmpty(email)) {
+            emailEditText.setError("邮箱不能为空");
+            passwordText.setError("密码不能为空");
+            return "fail";
         }
-        return "false";
+        return "succ";
     }
+
+    
 }
