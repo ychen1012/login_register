@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         android:drawableLeft="@drawable/user_32"
         android:drawablePadding="10dp"
         android:hint="@string/register_userName"
-        android:maxLength="16"
+        android:maxLength="160"
         android:padding="10dp"
         android:singleLine="true" />
 
@@ -38,8 +39,8 @@
         android:drawableLeft="@drawable/email_32"
         android:drawablePadding="10dp"
         android:hint="@string/regiter_email"
+        android:maxLength="160"
         android:padding="10dp"
-        android:maxLength="16"
         android:singleLine="true" />
 
     <EditText
@@ -54,7 +55,7 @@
         android:drawablePadding="10dp"
         android:hint="@string/register_password"
         android:inputType="textPassword"
-        android:maxLength="16"
+        android:maxLength="160"
         android:padding="10dp" />
 
     <EditText

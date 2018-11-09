@@ -161,5 +161,5 @@ public class LoginActivity extends Activity {
         return "succ";
     }
 
-    
+
 }
