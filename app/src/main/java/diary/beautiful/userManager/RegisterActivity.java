@@ -1,4 +1,4 @@
-package diary.beautiful.login;
+package diary.beautiful.userManager;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -42,11 +42,11 @@ public class RegisterActivity extends Activity {
     }
 
     void initComponents() {
-        register_bt = (Button) findViewById(R.id.register_bt);
-        userName_et = (EditText) findViewById(R.id.username);
-        email_et = (EditText) findViewById(R.id.email);
-        password_et = (EditText) findViewById(R.id.et_password);
-        password_et2 = (EditText) findViewById(R.id.et_password2);
+        register_bt = findViewById(R.id.register_bt);
+        userName_et = findViewById(R.id.username);
+        email_et =  findViewById(R.id.email);
+        password_et = findViewById(R.id.et_password);
+        password_et2 =  findViewById(R.id.et_password2);
     }
 
     void setListeners() {
